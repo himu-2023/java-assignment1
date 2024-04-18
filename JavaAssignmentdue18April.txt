@@ -1,0 +1,394 @@
+1.Write a Java program that compares two wrapper objects for equality and demonstrates when to use equals() instead of == (try with Integer or Float
+ classes)
+
+public class wrapperComparison {
+
+	public static void main(String[] args) {
+        // Comparing two Integer objects
+        Integer num1 = new Integer(10);
+        Integer num2 = new Integer(10);
+        
+        // Using == to compare Integer objects
+        System.out.println("Using == to compare Integer objects:");
+        System.out.println(num1 == num2); // Prints false because == compares object references
+        
+        // Using equals() to compare Integer objects
+        System.out.println("Using equals() to compare Integer objects:");
+        System.out.println(num1.equals(num2)); // Prints true because equals() compares object values
+        
+        // Comparing two Float objects
+        Float f1 = new Float(5.5);
+        Float f2 = new Float(5.5);
+        
+        // Using == to compare Float objects
+        System.out.println("Using == to compare Float objects:");
+        System.out.println(f1 == f2); // Prints false because == compares object references
+        
+        // Using equals() to compare Float objects
+        System.out.println("Using equals() to compare Float objects:");
+        System.out.println(f1.equals(f2)); // Prints true because equals() compares object values
+    }
+}
+
+
+===================================================================================================================================================================
+
+2.Write a Java program to remove duplicate characters from a string using StringBuffer.
+
+package assignment4;
+
+public class DuplicateChar {
+	public static String removeDuplicate(String input) {
+		StringBuffer sb=new StringBuffer();
+		boolean character[]=new boolean[122];//hello world
+		for(int i=0;i<input.length();i++) {
+		
+		
+		char status=input.charAt(i);
+		
+			if(!character[status]) {
+			
+			sb.append(status);
+			character[status]=true;
+			}
+		}
+		return sb.toString();
+	}
+
+	public static void main(String[] args) {
+		
+		String input ="Hello World";
+		String newString =removeDuplicate(input);
+		System.out.println("String after removing duplicate :"+newString);
+}
+
+}
+
+======================================================================================================================================================
+3.Write a Java program to concatenate all elements of a string array efficiently using StringBuilder.
+
+
+package assignment4;
+
+public class ConcatenateArrayElements {
+	
+	    public static void main(String[] args) {
+	        String[] stringArray = {"This", "is", "a", "sample", "array"};
+	        String concatenatedString = concatenateArrayElements(stringArray);
+	        System.out.println("Concatenated string: " + concatenatedString);
+	    }
+
+	    public static String concatenateArrayElements(String[] stringArray) {
+	        StringBuilder stringBuilder = new StringBuilder();
+	        for (String str : stringArray) {
+	            stringBuilder.append(str);
+	        }
+	        return stringBuilder.toString();
+	    }
+}
+
+======================================================================================================================================================
+4.Write a Java method to check if an input string is a palindrome (Use String functions).
+
+
+public class palindromeChecker {
+	
+	    public static void main(String[] args) {
+	        String inputString = "Nitin";
+	        boolean isPalindrome = isPalindrome(inputString);
+	        if (isPalindrome) {
+	            System.out.println(inputString + " is a palindrome.");
+	        } else {
+	            System.out.println(inputString + " is not a palindrome.");
+	        }
+	    }
+
+	    public static boolean isPalindrome(String str) {
+	        // Convert the input string to lowercase
+	        str = str.toLowerCase();
+	        
+	        // Remove all non-alphanumeric characters from the string
+	        str = str.replaceAll("[^a-z0-9]", "");
+	        
+	        // Create a reversed version of the string
+	        String reversedStr = new StringBuilder(str).reverse().toString();
+	        
+	        // Check if the original string is equal to its reversed version
+	        return str.equals(reversedStr);
+	    }
+}
+
+
+
+======================================================================================================================================================
+
+5.Write a program to calculate the square value of any number given by the user .Add an exception handling block to check whether the user enter 
+letters instead of numbers
+
+
+package assignment4;
+
+import java.util.Scanner;
+
+public class ExceptionSquare {
+
+	public static void main(String[] args) {
+	
+		
+		System.out.println("Enter the number");
+		Scanner sc = new Scanner(System.in);
+		try {
+			String input=sc.next();
+			int num=Integer.parseInt(input);
+			int square=num*num;
+			System.out.println("Square of given number is: "+square);
+		}
+		catch (Exception e){
+			System.out.println("Enter valid input");
+			System.out.println(e.getMessage());
+		}
+		finally {
+			sc.close();
+		}
+			
+		}
+
+}
+============================================================================================================================================================================
+6.Create an integer array of size n and read the elements from the user .Add an exception handling block to print the value at nth position of the 
+array
+
+package assignment4;
+
+import java.util.Scanner;
+
+public class ArrayExceptionNthSize {
+
+	public static void main(String[] args) {
+		System.out.println("Enter the size of array");
+		Scanner sc= new Scanner(System.in);
+		int size = sc.nextInt();
+		int arr[]=new int[size];
+		try {
+		System.out.println("Enter the element of array");
+		
+		    for(int i=0;i<size;i++) {
+			arr[i]=sc.nextInt();
+			
+		       }
+		
+			System.out.println("Enter the index position");
+			int pos=sc.nextInt();
+			System.out.println("Value of index "+pos+ "is: "+arr[pos]);
+		}
+		catch(ArrayIndexOutOfBoundsException e) {
+			System.out.println("Enter valid position ");
+			System.out.println(e.getMessage());
+		}
+		finally {
+			sc.close();
+		}
+
+	}
+
+}
+
+
+============================================================================================================================================================================
+7.Write a program to split a string containing two words using StringTokenizer without using hasMoreTokens() method and call nextToken() method 
+three times.Add an exception handling block if necessary.
+
+package assignment4;
+
+import java.util.StringTokenizer;
+
+public class StringTokanizerException {
+
+	public static void main(String[] args) {
+		StringTokenizer st=new StringTokenizer("Hello World");
+		try {
+		String token1=st.nextToken();
+	        System.out.println(token1);
+
+	        String token2=st.nextToken(); 
+                System.out.println(token2);
+	    
+	        String token3=st.nextToken();
+	        System.out.println(token3);
+
+	        }
+		catch(Exception e) {
+			System.out.println("There is no additional token to show...");
+		}
+		
+		
+
+        }
+}
+
+============================================================================================================================================================================
+8.Write a JAVA program to create a method that takes a string as input and throws an exception if the string does not contain vowels.
+
+package assignment4;
+import java.util.Scanner;
+//user defined exception
+class Novowels extends Exception{
+	public  Novowels(String msg) {
+		super(msg);//pass the string to exception class
+	}
+
+}
+
+public class StringIsVovelsORNot {
+	public static void StringIsVovelsORNot(String input) throws Novowels{//thows userdefined excetion
+		boolean containVowels=false;
+		String vowel ="aeiouAEIOU";
+		for (int i = 0; i < input.length(); i++) {
+			char test = input.charAt(i);
+			if(vowel.contains(String.valueOf(test))) {
+				containVowels=true;
+				break;
+			}
+		}
+		if(!containVowels) {
+			throw new Novowels("This string does not contains any vowels...");
+		}
+	}
+	public static void main(String[] args) {
+		
+		Scanner sc= new Scanner(System.in);
+		System.out.println("Enter the string");
+		try {
+		String input=sc.next();
+		StringIsVovelsORNot(input);
+		System.out.println("The string contains vowels...");
+		}catch(Novowels e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
+}
+
+============================================================================================================================================================================
+9.Write a program that creates a Calculator class.
+The class contains two variables of integer type. Design a constructor that accepts two values as parameter and set those values.
+
+Design four methods named Add(),Subtract(),multiply(),Division() for performing addition,subtraction,multiplication and division of two numbers.
+
+For addition and subtraction,two numbers should be positive.If any negative number is entered then throw an exception in respective methods.
+
+So design an exceptionhandler(ArithmeticException)in Add() and Subtract() methods respectively to check whether any number is negative or not.
+
+For division and multiplication two numbers should not be zero.If zero is entered for any number then throw an exception in respective methods.
+So design an exceptionhandler(ArithmeticException)inmultiply()andDivision()methods respectively to check whether any number is zero or not.
+
+Write a main class and declare four objects of Calculator class.Perform addition(objl),subtraction(obj2),multiply(obj3) and division(obj4) operations for these objects.
+If any non integer values are provided as input; then you should throw an exception(NumberFormatException)and display a message that informs the user of the wrong input before exiting
+
+package assignment4;
+
+import java.util.Scanner;
+
+public class Calculator {
+	
+	double num1;
+	double num2;
+	
+	
+	
+	public Calculator(double num1, double num2) {
+		super();
+		this.num1 = num1;
+		this.num2 = num2;
+	}
+	public  double add() {
+		if(num1<0 || num2<0) {
+			throw new ArithmeticException("Both numbers should not be -ve ");
+		}
+		
+		return num1+num2;
+	}
+	public  double sub() {
+		if(num1<0 || num2<0) {
+			throw new ArithmeticException("Both numbers should not be -ve ");
+		}
+		
+		return num1-num2;
+	}
+	
+	public  double mul() {
+		if(num1==0 || num2==0) {
+			throw new ArithmeticException("Both numbers should not be zero ");
+		}
+		
+		return num1*num2;
+	}
+	public  double div() {
+		if(num2==0) {
+			throw new ArithmeticException("Denominator should not be zero ");
+		}
+		
+		return num1/num2;
+	}
+	
+	
+	public static void main(String[] args) {
+	System.out.println("Enter the two numbers");
+	Scanner sc= new Scanner(System.in);
+	try {
+		String num1=sc.next();
+		String num2=sc.next();
+		Calculator cal=new Calculator(Integer.parseInt(num1), Integer.parseInt(num2));
+		System.out.println("Addition : "+cal.add());
+		System.out.println("Subtraction : "+cal.sub());
+		System.out.println("Multiplication : "+cal.mul());
+		System.out.println("Division : "+cal.div());
+		
+	}catch(NumberFormatException e) {
+		System.out.println("Please provide valid inputs...");
+		System.out.println(e.getMessage());
+	}
+	catch (ArithmeticException e) {
+		System.out.println(e.getMessage());
+	}
+	
+ }
+}
+
+
+============================================================================================================================================================================================
+10.Write the Java program that reads an input string and converts it to an integer, handling the exceptions if the input contains non-digits or if 
+the input is larger than what an integer can store:
+
+package assignment4;
+
+import java.util.Scanner;
+
+public class IlligleArgumentDemo {
+	public static int convertInt(String input) throws IllegalArgumentException,NumberFormatException{
+		int num=Integer.parseInt(input);
+		if(num<Integer.MIN_VALUE || num>Integer.MAX_VALUE) {
+			//if condition is true then throw
+		throw new IllegalArgumentException();
+		}
+		return num;
+	}
+	
+	public static void main(String[] args) {
+		System.out.println("Integer maximum range is :"+Integer.MAX_VALUE);
+		System.out.println("Integer minimum range is :"+Integer.MIN_VALUE);
+		
+		try {
+		System.out.println("Enter the number");
+		Scanner sc= new Scanner(System.in);
+		String num=sc.next();
+		convertInt(num);
+		System.out.println("The string is converted to integer successfully...");
+	    }catch(IllegalArgumentException e) {
+		System.out.println("Number should not be exceeds the range of integer ");
+		System.out.println(e.getMessage());
+	    }
+		
+
+}
+}
